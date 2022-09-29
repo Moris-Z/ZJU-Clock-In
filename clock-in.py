@@ -121,17 +121,17 @@ class DaKa(object):
         result_int = pow(password_int, e_int, M_int)
         return hex(result_int)[2:].rjust(128, '0')
 
-    def get_verifyCode(self):
+    #def get_verifyCode(self):
         #import ddddocr
-        ocr = ddddocr.DdddOcr()
+   #     ocr = ddddocr.DdddOcr()
 
-        img_path = 'https://healthreport.zju.edu.cn/ncov/wap/default/code'
-        res = self.sess.get(img_path, headers=self.headers)
+#        img_path = 'https://healthreport.zju.edu.cn/ncov/wap/default/code'
+ #       res = self.sess.get(img_path, headers=self.headers)
 
-        if res.status_code == 200:
+#        if res.status_code == 200:
             # open('./code.jpg', 'wb').write(res.content)
-            self.vcode = ocr.classification(res.content)
-            print("验证码已识别：", self.vcode)
+ #           self.vcode = ocr.classification(res.content)
+  #          print("验证码已识别：", self.vcode)
 
 # Exceptions
 class LoginError(Exception):
