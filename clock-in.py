@@ -25,7 +25,7 @@ class DaKa(object):
 
     def __init__(self, username, password):
         self.username = username
-        #self.password = password
+        self.password = password
         self.login_url = "https://zjuam.zju.edu.cn/cas/login?service=https%3A%2F%2Fhealthreport.zju.edu.cn%2Fa_zju%2Fapi%2Fsso%2Findex%3Fredirect%3Dhttps%253A%252F%252Fhealthreport.zju.edu.cn%252Fncov%252Fwap%252Fdefault%252Findex"
         self.base_url = "https://healthreport.zju.edu.cn/ncov/wap/default/index"
         self.save_url = "https://healthreport.zju.edu.cn/ncov/wap/default/save"
@@ -73,9 +73,9 @@ class DaKa(object):
             res = self.sess.get(self.base_url, headers=self.headers)
             html = res.content.decode()
 
-        #try:
-            #old_infos = re.findall(r'oldInfo: ({[^\n]+})', html)
-            #if len(old_infos) != 0:
+        try:
+            old_infos = re.findall(r'oldInfo: ({[^\n]+})', html)
+            if len(old_infos) != 0:
                 old_info = json.loads(old_infos[0])
             else:
                 raise RegexMatchError("未发现缓存信息，请先至少手动成功打卡一次再运行脚本")
@@ -118,7 +118,7 @@ class DaKa(object):
         password_int = int.from_bytes(password_bytes, 'big')
         e_int = int(e_str, 16)
         M_int = int(M_str, 16)
-        #result_int = pow(password_int, e_int, M_int)
+        result_int = pow(password_int, e_int, M_int)
         return hex(result_int)[2:].rjust(128, '0')
 
     def get_verifyCode(self):
