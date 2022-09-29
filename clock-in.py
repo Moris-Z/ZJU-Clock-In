@@ -122,7 +122,7 @@ class DaKa(object):
         return hex(result_int)[2:].rjust(128, '0')
 
     def get_verifyCode(self):
-        import ddddocr
+        #import ddddocr
         ocr = ddddocr.DdddOcr()
 
         img_path = 'https://healthreport.zju.edu.cn/ncov/wap/default/code'
