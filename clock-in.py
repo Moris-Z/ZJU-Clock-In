@@ -123,7 +123,7 @@ class DaKa(object):
 
     def get_verifyCode(self):
         #import ddddocr
-        #ocr = ddddocr.DdddOcr()
+        ocr = ddddocr.DdddOcr()
 
         img_path = 'https://healthreport.zju.edu.cn/ncov/wap/default/code'
         res = self.sess.get(img_path, headers=self.headers)
