@@ -33,10 +33,11 @@ class DaKa(object):
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36"
         }
         self.sess = requests.Session()
+        self.sess.trust_env = False
 
     def login(self):
         """Login to ZJU platform"""
-        res = self.sess.get(self.login_url, headers=self.headers)
+        res = self.sess.get(self.login_url, headers=self.headers, verify=False)
         execution = re.search(
             'name="execution" value="(.*?)"', res.text).group(1)
         res = self.sess.get(
