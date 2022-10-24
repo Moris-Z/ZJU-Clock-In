@@ -110,7 +110,7 @@ class DaKa(object):
         new_info['jcqzrq'] = ""
         new_info['gwszdd'] = ""
         new_info['szgjcs'] = ""
-        new_info['verifyCode'] = self.vcode
+        # new_info['verifyCode'] = self.vcode
         self.info = new_info
         return new_info
 
@@ -122,9 +122,9 @@ class DaKa(object):
         result_int = pow(password_int, e_int, M_int)
         return hex(result_int)[2:].rjust(128, '0')
 
-    def get_verifyCode(self):
+    # def get_verifyCode(self):
         #import ddddocr
-        ocr = ddddocr.DdddOcr()
+        # ocr = ddddocr.DdddOcr()
 
 #        img_path = 'https://healthreport.zju.edu.cn/ncov/wap/default/code'
  #       res = self.sess.get(img_path, headers=self.headers)
@@ -171,12 +171,12 @@ def main(username, password):
         print(str(err))
         raise Exception
 
-    print('正在识别验证码...')
-    try:
-        dk.get_verifyCode()
-    except Exception as err:
-        print('获取验证码失败，请手动打卡，更多信息: ' + str(err))
-        raise Exception    
+    # print('正在识别验证码...')
+    # try:
+    #     dk.get_verifyCode()
+    # except Exception as err:
+    #    print('获取验证码失败，请手动打卡，更多信息: ' + str(err))
+    #     raise Exception    
 
     print('正在获取个人信息...')
     try:
